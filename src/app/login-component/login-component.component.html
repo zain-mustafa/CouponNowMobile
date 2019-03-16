@@ -1,0 +1,30 @@
+<ScrollView>
+    <FlexboxLayout flexDirection="column" >
+
+
+        <StackLayout style="height: auto;">
+            <Image src="res://logotransparent" stretch="none" horizontalAlignment="center"></Image>
+        </StackLayout>
+
+        <StackLayout class="form" [formGroup]="loginForm">
+
+                <TextField loaded="onTextFieldLoaded" hint="E-mail"  editable="true" class="user-field" formControlName="username" (blur)="isEmailBlured()" [ngClass]= "{ invalid: !emailControlIsValid }"></TextField>
+                <Label *ngIf="!emailControlIsValid" text="Please Enter a Valid E-mail!!" class="warning-label"></Label>
+
+                <TextField loaded="onTextFieldLoaded" hint="Password"  editable="true" class="user-field" formControlName="password" secure="true" returnKeyType="done" (returnPress)="onLogIn(loginForm)"  (blur)="isPasswordBlured()" [ngClass]= "{ invalid: !passwordControlIsValid }"></TextField>
+                <Label *ngIf="!passwordControlIsValid" text="Must be 6 characters!!" class="warning-label"></Label>
+
+                <Button text="Log In" (tap)="onLogIn(loginForm)" class="btn btn-primary login-btn"></Button>
+
+                <Button text="Create Account" (tap)="onCreateAccount(loginForm)" class="btn btn-primary login-btn"></Button>
+
+        </StackLayout>
+
+        <!-- <StackLayout>
+            <Label  text="{{ user }}" editable="false"  horizontalAlignment="center"></Label>
+            <Label text="{{ pass }}" editable="false"  horizontalAlignment="center"></Label>
+        </StackLayout> -->
+
+
+    </FlexboxLayout>
+</ScrollView>

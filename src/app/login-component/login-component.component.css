@@ -1,0 +1,14 @@
+/* Add mobile styles for the component here.  */
+.user-input {
+
+}
+
+.password-field {
+    width: 80%;
+    margin: 15;
+}
+
+.login-btn {
+    width:  80%;
+    margin: 15;
+}

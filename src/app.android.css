@@ -1,0 +1,36 @@
+@import '~nativescript-theme-core/css/core.light.css';
+
+.action-bar {
+    background-color:#3A53FF;color:#fff
+}
+
+.dash-button {
+    padding: 10;
+}
+
+.user-input-field {
+    width: 80%;
+    margin: 20;
+}
+
+.bottom-nav {
+    height: 75;
+    border-top-width: 1;
+    border-top-color: black;
+}
+
+.warning-label {
+    color: red;
+    width: 80%;
+}
+
+.user-field {
+    margin: 15 0 0 0;
+    width: 80%;
+    border-width: 5px;
+    border-radius: 50px;
+}
+
+.invalid {
+    border-color: red;
+}

@@ -1,0 +1,24 @@
+<!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet -->
+<RadSideDrawer [drawerTransition]="sideDrawerTransition" [drawerOpening]="onDrawerOpened()">
+    <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
+        <StackLayout row="0" >
+            <Label class="sidedrawer-header-brand" text="{{ userFullname }}" horizontalAlignment="center" style="margin-top: 20;"></Label>
+            <Label class="footnote" text="{{ userEmail }}" horizontalAlignment="center"></Label>
+        </StackLayout>
+
+        <ScrollView row="1">
+            <StackLayout class="sidedrawer-content">
+                <GridLayout columns="auto, *" (tap)="onNavItemTap('/dashboard')" >
+                    <Label col="1" text="Dashboard" class="dash-button p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" (tap)="onNavItemTap('/chooseinterest')">
+                    <Label col="1" text="Add/Change Interests" class="dash-button p-r-10"></Label>
+                </GridLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+
+    <page-router-outlet tkMainContent class="page page-content"></page-router-outlet>
+</RadSideDrawer>

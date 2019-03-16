@@ -1,0 +1,28 @@
+<ActionBar class="action-bar">
+
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="Choose Interests"></Label>
+    </ActionBar>
+
+    <FlexboxLayout flexDirection="column" alignContent="flex-end">
+        <ScrollView>
+                    <ListView [items]="interests" class="list-group" height="90%">
+                            <ng-template let-interest="item" let-i="index">
+                            <GridLayout columns="*,*" orientation="horizontal" class="list-group-item">
+                                <Label col="0" [text]="interest.name"></Label>
+                                <Switch col="1" checked="false" (checkedChange)="interestSelected($event, interest.name)"></Switch>
+                            </GridLayout>
+                    </ng-template>
+                    </ListView>
+        </ScrollView>
+
+        <GridLayout columns="*,*" class="bottom-nav" >
+                <Button text="Save Interests" (tap)="onSaveInterests()" col="1" class="btn btn-primary login-btn" horizontalAlignment="right" class="m-t-5"></Button>
+        </GridLayout>
+    </FlexboxLayout>
+
+

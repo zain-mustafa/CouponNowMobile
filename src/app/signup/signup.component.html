@@ -1,0 +1,28 @@
+<!-- <Button text="signup works!" class="btn btn-primary"></Button> -->
+<ScrollView>
+    <FlexboxLayout flexDirection="column" justifyContent="space-between">
+        <StackLayout [formGroup]="signupForm">
+
+            <TextField loaded="onTextFieldLoaded" hint="Firstname"  editable="true" class="user-field" formControlName="firstname" (blur)="isFirstnameBlured()" [ngClass]= "{ invalid: !firstnameControlIsValid }"></TextField>
+            <Label *ngIf="!firstnameControlIsValid" text="Please enter a valid firstname!" class="warning-label"></Label>
+
+            <TextField loaded="onTextFieldLoaded" hint="Lastname"  editable="true" class="user-field" formControlName="lastname" (blur)="isLastnameBlured()" [ngClass]= "{ invalid: !lastnameControlIsValid }"></TextField>
+            <Label *ngIf="!lastnameControlIsValid" text="Please enter a valid lastname!" class="warning-label"></Label>
+
+            <TextField loaded="onTextFieldLoaded" hint="E-mail"  editable="true" class="user-field" formControlName="email" (blur)="isEmailBlured()" [ngClass]= "{ invalid: !emailControlIsValid }"></TextField>
+            <Label *ngIf="!emailControlIsValid" text="Please Enter a Valid E-mail!!" class="warning-label"></Label>
+
+            <TextField loaded="onTextFieldLoaded" hint="Password"  editable="true" class="user-field" formControlName="password" secure="true" (blur)="isPasswordBlured()" [ngClass]= "{ invalid: !passwordControlIsValid }"></TextField>
+            <Label *ngIf="!passwordControlIsValid" text="Must be between 6 and 10 characters." class="warning-label"></Label>
+            <Label *ngIf="!passwordControlIsValid" text="Must have an uppercase letter." class="warning-label"></Label>
+            <Label *ngIf="!passwordControlIsValid" text="Must have a lowercase letter." class="warning-label"></Label>
+
+        </StackLayout>
+
+        <GridLayout columns="*,*" class="bottom-nav" style="height: 75;">
+            <Button text="Back" (tap)="onBack()" col="0" class="btn btn-primary login-btn" horizontalAlignment="left"></Button>
+            <Button text="Next" (tap)="onSignup(signupForm)" col="1" class="btn btn-primary login-btn" horizontalAlignment="right"></Button>
+        </GridLayout>
+
+    </FlexboxLayout>
+</ScrollView>

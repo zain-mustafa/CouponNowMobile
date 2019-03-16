@@ -1,0 +1,19 @@
+<ScrollView>
+    <FlexboxLayout flexDirection="column" justifyContent="space-between">
+            <StackLayout>
+                    <Label text="Please enter your Date of Birth" horizontalAlignment="center" class="p-t-20"></Label>
+                    <DatePicker (loaded)="onPickerLoaded($event)" (dayChange)="onDayChanged($event)" (monthChange)="onMonthChanged($event)" (yearChange)="onYearChanged($event)" verticalAlignment="center"></DatePicker>
+
+                    <Label text="Please enter your Gender" horizontalAlignment="center" class="p-t-10"></Label>
+                    <ListPicker [items]="genders" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event)"></ListPicker>
+
+                    <form [formGroup]="profileForm">
+                        <TextField loaded="onTextFieldLoaded" hint="Occupation"  editable="true" class="user-field" formControlName="occupation" class="user-input-field"></TextField>
+                    </form>
+            </StackLayout>
+
+            <GridLayout columns="*,*" class="bottom-nav" style="height: 75;">
+                <Button text="Next" (tap)="setProfileInfo(profileForm)" col="1" class="btn btn-primary login-btn" horizontalAlignment="right" class="m-t-5"></Button>
+            </GridLayout>
+    </FlexboxLayout>
+</ScrollView>
