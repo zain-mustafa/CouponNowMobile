@@ -54,4 +54,12 @@ export class AppComponent {
         this.userEmail = this.loginInfo.customerInfo.email;
         console.log(this.userFullname);
     }
+
+    checkEnabled() {
+        if (this.router.url === '/' || this.router.url === '/signup' || this.router.url === '/setprofile') {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

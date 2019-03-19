@@ -1,5 +1,5 @@
 <!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet -->
-<RadSideDrawer [drawerTransition]="sideDrawerTransition" [drawerOpening]="onDrawerOpened()">
+<RadSideDrawer [drawerTransition]="sideDrawerTransition" [drawerOpening]="onDrawerOpened()" [gesturesEnabled]="checkEnabled()">
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
         <StackLayout row="0" >
             <Label class="sidedrawer-header-brand" text="{{ userFullname }}" horizontalAlignment="center" style="margin-top: 20;"></Label>
