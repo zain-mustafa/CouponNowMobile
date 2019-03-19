@@ -16,6 +16,11 @@ import { Injectable } from '@angular/core';
             name: 'ThreeForOne',
             latitude: 42.243728,
             longitude: -83.100727
+        },
+        {
+            name: 'Gamble All Day',
+            latitude: 42.320224,
+            longitude: -83.036655
         }
     ];
 
