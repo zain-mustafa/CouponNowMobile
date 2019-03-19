@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import * as app from "tns-core-modules/application";
+import { GeolocationService } from '../geolocation.service';
 
 @Component({
   selector: 'ns-dashboard',
@@ -10,9 +11,10 @@ import * as app from "tns-core-modules/application";
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor( public geolocation: GeolocationService) { }
 
   ngOnInit() {
+      this.geolocation.updateLocation();
   }
 
   onDrawerButtonTap(): void {

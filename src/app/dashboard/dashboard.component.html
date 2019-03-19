@@ -10,5 +10,7 @@
 
 
 <StackLayout>
-        <Button text="dashboard works!" class="btn btn-primary"></Button>
+    <Label text="Latitude: {{ this.geolocation.latitude }}"></Label>
+    <Label text="Longitude: {{ this.geolocation.longitude }}"></Label>
+    <Button class="btn btn-primary btn-active" text="Update" (tap)="this.geolocation.updateLocation()"></Button>
 </StackLayout>
