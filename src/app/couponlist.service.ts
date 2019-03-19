@@ -19,5 +19,12 @@ import { Injectable } from '@angular/core';
         }
     ];
 
+    // List updates each time dashboard is opened
+    couponToMap = {
+        name: '',
+        longitude: 0,
+        latitude: 0
+    }
+
 
    }

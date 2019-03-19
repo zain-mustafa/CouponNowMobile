@@ -6,6 +6,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { SignupComponent } from "./signup/signup.component";
 import { SetProfileComponent } from "./set-profile/set-profile.component";
 import { ChooseinterestComponent } from "./chooseinterest/chooseinterest.component";
+import { MapToCouponComponent } from "./map-to-coupon/map-to-coupon.component";
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'signup', component: SignupComponent},
     { path: 'setprofile', component: SetProfileComponent },
-    { path: 'chooseinterest', component: ChooseinterestComponent}
+    { path: 'chooseinterest', component: ChooseinterestComponent},
+    { path: 'map', component: MapToCouponComponent }
 ];
 
 @NgModule({

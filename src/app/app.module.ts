@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { SetProfileComponent } from './set-profile/set-profile.component';
 import { ChooseinterestComponent } from './chooseinterest/chooseinterest.component';
+import { MapToCouponComponent } from './map-to-coupon/map-to-coupon.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -38,7 +39,8 @@ import { ChooseinterestComponent } from './chooseinterest/chooseinterest.compone
         DashboardComponent,
         SignupComponent,
         SetProfileComponent,
-        ChooseinterestComponent
+        ChooseinterestComponent,
+        MapToCouponComponent
     ],
     providers: [
         LoginService

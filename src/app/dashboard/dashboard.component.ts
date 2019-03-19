@@ -5,6 +5,7 @@ import { GeolocationService } from '../geolocation.service';
 import { CouponlistService } from '../couponlist.service';
 import { Location, distance } from "nativescript-geolocation";
 import * as Geolocation from "nativescript-geolocation";
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'ns-dashboard',
@@ -19,7 +20,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     nearCouponList = [];
 
-  constructor( public geolocation: GeolocationService, public couponService: CouponlistService) { }
+  constructor( public geolocation: GeolocationService, public couponService: CouponlistService, public router: RouterExtensions) { }
 
   ngOnInit() {
 
@@ -37,12 +38,20 @@ export class DashboardComponent implements OnInit, AfterViewInit {
                 }
                 console.log(this.nearCouponList);
               });
-
               // //////////////////////////////////
         }).catch(error => {
             console.log(error);
         });
     });
+  }
+
+  onCouponClick(coupon) {
+    this.couponService.couponToMap['name'] = coupon.name;
+    this.couponService.couponToMap['latitude'] = coupon.latitude;
+    this.couponService.couponToMap['longitude'] = coupon.longitude;
+
+    console.log(this.couponService.couponToMap);
+    this.router.navigate(['/map']);
   }
 
   ngAfterViewInit() {
