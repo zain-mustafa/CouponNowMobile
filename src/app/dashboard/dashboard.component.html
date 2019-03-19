@@ -17,7 +17,7 @@
     <ScrollView>
         <ListView [items]="this.nearCouponList" class="list-group" height="70%">
             <ng-template let-coupon="item">
-            <GridLayout columns="*,*" orientation="horizontal" class="list-group-item">
+            <GridLayout columns="*,*" orientation="horizontal" class="list-group-item" (tap)="onCouponClick(coupon['coupon'])">
                 <Label col="0" [text]="coupon['coupon'].name"></Label>
                 <Label col="1" [text]="coupon.distance.toFixed(1) + ' KM'" horizontalAlignment="right" ></Label>
             </GridLayout>
