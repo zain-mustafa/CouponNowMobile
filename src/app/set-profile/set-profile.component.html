@@ -7,9 +7,9 @@
                     <Label text="Please enter your Gender" horizontalAlignment="center" class="p-t-10"></Label>
                     <ListPicker [items]="genders" selectedIndex="0" (selectedIndexChange)="selectedIndexChanged($event)"></ListPicker>
 
-                    <form [formGroup]="profileForm">
+                    <StackLayout [formGroup]="profileForm">
                         <TextField loaded="onTextFieldLoaded" hint="Occupation"  editable="true" class="user-field" formControlName="occupation" class="user-input-field"></TextField>
-                    </form>
+                    </StackLayout>
             </StackLayout>
 
             <GridLayout columns="*,*" class="bottom-nav" style="height: 75;">

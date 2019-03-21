@@ -28,7 +28,7 @@ export class LoginService {
         console.log(email);
         console.log(password);
 
-        return this.http.post(this.serverUrl + '/customer/login', { email: email, password: password }, { headers: this.headers })
+        return this.http.post(this.serverUrl + '/mobile/login/', { email: email, password: password }, { headers: this.headers })
           .pipe(map((response: Response) => {
               console.log("Inside Post Request");
                 this.setCustomerInfo(response);
@@ -38,7 +38,7 @@ export class LoginService {
 
       onCreateAccount( type: String, firstname: String, lastname: String, email: String, password: String): Observable<any> {
         // API call when the customer signs up
-        return this.http.post(this.serverUrl + '/customer/signup', { type: type, firstname: firstname, lastname: lastname, email: email, password: password })
+        return this.http.post(this.serverUrl + '/mobile/signup', { type: type, firstname: firstname, lastname: lastname, email: email, password: password })
           .pipe(
             map(response => {
                       // displays the response recieved on the browser console.
@@ -49,7 +49,13 @@ export class LoginService {
       }
 
       onProfileSetup(email: String, birthMonth: Number, birthDay: Number, birthYear: Number, gender: String, occupation: String): Observable<any> {
-        return this.http.post(this.serverUrl + '/customer/savecustomersetupinfo', { email: email, birthMonth: birthMonth, birthDay: birthDay, birthYear: birthYear, gender: gender, occupation: occupation })
+          console.log(email);
+          console.log(birthMonth);
+          console.log(birthDay);
+          console.log(birthYear);
+          console.log(gender);
+          console.log(occupation);
+        return this.http.post(this.serverUrl + '/mobile/signup/savecustomersetupinfo', { email: email, birthMonth: birthMonth, birthDay: birthDay, birthYear: birthYear, gender: gender, occupation: occupation })
         .pipe(map(response => {
           console.log(response);
           return response;
