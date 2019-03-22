@@ -1,3 +1,16 @@
-<Button text="Show Directions" (tap)="showMap()" class="btn btn-primary"></Button>
+<ScrollView>
+    <StackLayout>
+        <Label [text]="this.couponService.couponToMap.name" horizontalAlignment="center"></Label>
+        <Label text="Offer Available at: "></Label>
+        <StackLayout *ngFor="let location of this.couponService.couponToMap.locNames; let i = index">
+            <GridLayout columns="*,*" rows="*">
+                <Label col="0" [text]="location"></Label>
+                <Button col= "1" text="Show Directions" (tap)="showMap(this.couponService.couponToMap.coordinates[i][0], this.couponService.couponToMap.coordinates[i][1])" class="btn btn-primary"></Button>
+            </GridLayout>
+        </StackLayout>
+    </StackLayout>
+</ScrollView>
+
+
 
 

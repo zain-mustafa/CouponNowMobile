@@ -20,16 +20,16 @@ export class MapToCouponComponent implements OnInit {
 
   ngOnInit() {
 
-    this.endLatitude = this.couponService.couponToMap.latitude;
-    this.endLongitude = this.couponService.couponToMap.longitude;
+    // this.endLatitude = this.couponService.couponToMap.latitude;
+    // this.endLongitude = this.couponService.couponToMap.longitude;
 
   }
 
-  showMap() {
+  showMap(longitude, latitude) {
     this.directions.navigate({
         to: {
-            lat: this.endLatitude,
-            lng: this.endLongitude
+            lat: latitude,
+            lng: longitude
         },
         type: "driving",
         ios: {

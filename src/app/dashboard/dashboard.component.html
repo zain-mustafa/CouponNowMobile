@@ -15,11 +15,11 @@
     <Button class="btn btn-primary btn-active" text="Update" (tap)="this.geolocation.updateLocation()"></Button>
     <Label text="Nearby Coupons" horizontalAlignment="center"></Label>
     <ScrollView>
-        <ListView [items]="this.nearCouponList" class="list-group" height="70%">
+        <ListView *ngIf="isListLoaded" [items]="this.nearCouponList" class="list-group" height="70%">
             <ng-template let-coupon="item">
-            <GridLayout columns="*,*" orientation="horizontal" class="list-group-item" (tap)="onCouponClick(coupon['coupon'])">
-                <Label col="0" [text]="coupon['coupon'].name"></Label>
-                <Label col="1" [text]="coupon.distance.toFixed(1) + ' KM'" horizontalAlignment="right" ></Label>
+            <GridLayout columns="*,*" orientation="horizontal" class="list-group-item" (tap)="onCouponClick(coupon)">
+                <Label col="0" [text]="coupon.name"></Label>
+                <Label col="1" text="KM" horizontalAlignment="right" ></Label>
             </GridLayout>
     </ng-template>
     </ListView>
