@@ -1,0 +1,13 @@
+    <StackLayout>
+            <Label text="Saved Coupons" horizontalAlignment="center" style="margin: 10; font-size: 20"></Label>
+            <ScrollView>
+                    <ListView *ngIf="this.customerInfo.customerInfo.acceptedCoupons.length > 0" [items]="this.customerInfo.customerInfo.acceptedCoupons" class="list-group" height="100%">
+                        <ng-template let-coupon="item">
+                        <GridLayout columns="*" orientation="horizontal" class="list-group-item" (tap)="onCouponClick(coupon)">
+                            <Label col="0" [text]="coupon.name"></Label>
+                            <!-- <Label col="1" text="KM" horizontalAlignment="right" ></Label> -->
+                        </GridLayout>
+                </ng-template>
+                </ListView>
+                </ScrollView>
+    </StackLayout>

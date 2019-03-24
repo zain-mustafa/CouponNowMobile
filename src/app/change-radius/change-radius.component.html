@@ -1,0 +1,16 @@
+<ScrollView>
+        <FlexboxLayout flexDirection="column" justifyContent="space-between">
+            <StackLayout [formGroup]="changeRadForm">
+                <Label [text]="'Your current radius is: ' + this.customerInfo.customerInfo.couponRadius" style="padding: 10; font-size: 15"></Label>
+                <Label text="Please Enter your new Radius below: " style="padding: 10; font-size: 15"></Label>
+                <TextField formControlName="radius" hint="Radius" (blur)="isRadiusBlured()"></TextField>
+                <Label *ngIf="!radiusControlIsValid" text="Please enter a valid radius"></Label>
+            </StackLayout>
+
+            <GridLayout columns="*,*" class="bottom-nav" style="height: 75;">
+                <Button text="Back" (tap)="onBack()" col="0" class="btn btn-primary login-btn" horizontalAlignment="left"></Button>
+                <Button text="Save" col="1" class="btn btn-primary login-btn" horizontalAlignment="right" (tap)="onRadiusChange(changeRadForm)"></Button>
+            </GridLayout>
+
+        </FlexboxLayout>
+    </ScrollView>

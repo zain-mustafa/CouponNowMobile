@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { registerElement } from "nativescript-angular/element-registry";
 import { Directions } from "nativescript-directions";
 import { CouponlistService } from '../couponlist.service';
+import { CouponsaveService } from '../couponsave.service';
+import { LoginService } from '../login.service';
+import * as Geolocation from "nativescript-geolocation";
+import { GeolocationService } from '../geolocation.service';
+import { Location, distance } from "nativescript-geolocation";
+import { Page } from "tns-core-modules/ui/page";
+import * as Toast from 'nativescript-toast';
 
 @Component({
   selector: 'ns-map-to-coupon',
@@ -16,7 +23,12 @@ export class MapToCouponComponent implements OnInit {
     endLongitude = 0;
     endLatitude = 0;
 
-  constructor( public couponService: CouponlistService) { }
+    isSaved = false;
+    couponDeleted = false;
+
+    public endLocation: Location = new Location();
+
+  constructor( public geolocation: GeolocationService, public couponService: CouponlistService, public saveService: CouponsaveService, public customerInfo: LoginService, public page: Page) { }
 
   ngOnInit() {
 
@@ -43,4 +55,45 @@ export class MapToCouponComponent implements OnInit {
       });
   }
 
+  onCouponSave(coupon) {
+    this.isSaved = false;
+    this.customerInfo.customerInfo.acceptedCoupons.forEach(element => {
+        if (this.couponService.couponToMap.campaignId === element.campaignId) {
+            Toast.makeText("You already have this coupon saved!!").show();
+            this.isSaved = true;
+        }
+    });
+
+    if (this.isSaved) {
+        return;
+    }
+      this.saveService.saveCoupon(coupon, this.customerInfo.customerInfo.email).subscribe(response => {
+          console.log(this.customerInfo.customerInfo.acceptedCoupons)
+        this.customerInfo.customerInfo.acceptedCoupons.push(coupon);
+        Toast.makeText("Coupon Saved!!").show();
+        console.log(response);
+      });
+  }
+
+  onCouponUnsave(coupon) {
+    this.couponDeleted = false;
+    this.customerInfo.customerInfo.acceptedCoupons.forEach(element => {
+        if (this.couponService.couponToMap.campaignId === element.campaignId) {
+            this.saveService.unsaveCoupon(coupon, this.customerInfo.customerInfo.email).subscribe(response => {
+                this.customerInfo.customerInfo.acceptedCoupons = this.customerInfo.customerInfo.acceptedCoupons.filter(coupons => {
+                    if ( coupon.campaignId !== coupons.campaignId) {
+                        return coupon;
+                    }
+                });
+                Toast.makeText("Coupon UnSaved!!").show();
+                this.couponDeleted = true;
+                console.log(response);
+              });
+        }
+    });
+
+    if (this.couponDeleted === false) {
+        Toast.makeText("You dont have this coupon Saved!!").show();
+    }
+  }
 }

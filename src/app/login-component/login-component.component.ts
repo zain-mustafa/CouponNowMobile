@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
 
     this.loginService.loginCustomer(form.value.username, form.value.password)
     .subscribe(response => {
-        console.log(response['type']);
-        console.log(this.loginService.customerInfo);
+        // console.log(response['type']);
+        // console.log(this.loginService.customerInfo);
 
         if (response && response['type'] === 'customer')
             { this.router.navigate(['/dashboard'], {clearHistory: true}); }

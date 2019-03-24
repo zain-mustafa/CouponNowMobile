@@ -7,6 +7,8 @@ import { SignupComponent } from "./signup/signup.component";
 import { SetProfileComponent } from "./set-profile/set-profile.component";
 import { ChooseinterestComponent } from "./chooseinterest/chooseinterest.component";
 import { MapToCouponComponent } from "./map-to-coupon/map-to-coupon.component";
+import { AcceptedListComponent } from "./accepted-list/accepted-list.component";
+import { ChangeRadiusComponent } from "./change-radius/change-radius.component";
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: 'setprofile', component: SetProfileComponent },
     { path: 'chooseinterest', component: ChooseinterestComponent},
-    { path: 'map', component: MapToCouponComponent }
+    { path: 'map', component: MapToCouponComponent },
+    { path: 'acceptedlist', component: AcceptedListComponent},
+    { path: 'changeradius', component: ChangeRadiusComponent}
 ];
 
 @NgModule({

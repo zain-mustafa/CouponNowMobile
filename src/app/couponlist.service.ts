@@ -2,28 +2,38 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'tns-core-modules/ui/page/page';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { LoginService } from './login.service';
 
 @Injectable({
     providedIn: 'root'
   })
   export class CouponlistService {
-    private serverUrl = "http://c08b174c.ngrok.io";
+    private serverUrl = "http://a9e401d5.ngrok.io";
     headers = this.createRequestHeader();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private customerInfo: LoginService) { }
+
+    isSaved = false;
+    isCouponAdded;
+
+    sortedNearCouponList = [];
+    couponsNoInterest = [];
 
     // List updates each time dashboard is opened
     couponToMap = {
         name: '',
         locNames: '',
-        coordinates: ''
+        coordinates: '',
+        campaignId: '',
+        business: '',
+        businessId: '',
+        tags: [],
+        startDate: '',
+        endDate: ''
     }
 
     getCoupons(lon: number, lat: number, radius: number) {
         console.log("inside get coupon service");
-        // console.log("Longitude: " + lon);
-        // console.log("Latitude: " + lat);
-        // console.log("Radius: " + radius);
 
         let params = new HttpParams().set( "longitude", lon.toString() ).set("latitude", lat.toString()).set("radius", radius.toString());
 
@@ -33,6 +43,21 @@ import { map } from 'rxjs/operators';
                 return response;
             })
         );
+    }
+
+    sortCouponList(couponList) {
+
+        couponList.forEach(coupon => {
+            this.isCouponAdded = false;
+            coupon.tags.forEach(tag => {
+                this.customerInfo.sortedCustomerInterests.forEach(interest => {
+                    if (tag === interest.interest && this.isCouponAdded === false) {
+                        this.sortedNearCouponList.push(coupon);
+                        this.isCouponAdded = true;
+                    }
+                })
+            })
+        })
     }
 
     private createRequestHeader() {

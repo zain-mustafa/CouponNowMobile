@@ -6,7 +6,9 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class LoginService {
 
-    private serverUrl = "http://c08b174c.ngrok.io";
+    private serverUrl = "http://a9e401d5.ngrok.io";
+
+    public sortedCustomerInterests = [];
 
     public customerInfo: any = {
         email: '',
@@ -15,7 +17,9 @@ export class LoginService {
         dateOfBirth: '',
         gender: '',
         occupation: '',
-        couponRadius: ''
+        couponRadius: '',
+        interests: [],
+        acceptedCoupons: []
       };
 
      headers = this.createRequestHeader();
@@ -71,8 +75,21 @@ export class LoginService {
         this.customerInfo.gender = response['gender'];
         this.customerInfo.occupation = response['occupation'];
         this.customerInfo.couponRadius = response['couponRadius'];
-        console.log(this.customerInfo);
+        this.customerInfo.interests = response['interests'];
+        this.customerInfo.acceptedCoupons = response['acceptedCoupons'];
+        console.log(this.customerInfo.interests);
+        this.sortedCustomerInterests = this.customerInfo.interests.sort((a, b) => a.rating < b.rating ? 1 : a.rating > b.rating ? -1 : 0);
+        console.log(this.sortedCustomerInterests);
         console.log("Done Setting customer Info");
+      }
+
+      onRadiusUpdate(email: String, radius: Number) {
+          console.log(email, radius);
+          return this.http.post(this.serverUrl + '/mobile/coupons/updateradius', { email: email, radius: radius})
+          .pipe(map(response => {
+            this.customerInfo.couponRadius = radius;
+            return response;
+          }));
       }
 
     private createRequestHeader() {

@@ -16,6 +16,14 @@
                     <Label col="1" text="Add/Change Interests" class="dash-button p-r-10"></Label>
                 </GridLayout>
 
+                <GridLayout columns="auto, *" (tap)="onNavItemTap('/acceptedlist')">
+                    <Label col="1" text="View Saved Coupons" class="dash-button p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" (tap)="onNavItemTap('/changeradius')">
+                    <Label col="1" text="Change Radius" class="dash-button p-r-10"></Label>
+                </GridLayout>
+
             </StackLayout>
         </ScrollView>
     </GridLayout>

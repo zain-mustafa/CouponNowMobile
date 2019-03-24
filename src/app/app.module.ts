@@ -14,6 +14,8 @@ import { SignupComponent } from './signup/signup.component';
 import { SetProfileComponent } from './set-profile/set-profile.component';
 import { ChooseinterestComponent } from './chooseinterest/chooseinterest.component';
 import { MapToCouponComponent } from './map-to-coupon/map-to-coupon.component';
+import { AcceptedListComponent } from './accepted-list/accepted-list.component';
+import { ChangeRadiusComponent } from './change-radius/change-radius.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -40,7 +42,9 @@ import { MapToCouponComponent } from './map-to-coupon/map-to-coupon.component';
         SignupComponent,
         SetProfileComponent,
         ChooseinterestComponent,
-        MapToCouponComponent
+        MapToCouponComponent,
+        AcceptedListComponent,
+        ChangeRadiusComponent
     ],
     providers: [
         LoginService

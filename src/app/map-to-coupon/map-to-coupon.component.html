@@ -1,13 +1,21 @@
 <ScrollView>
     <StackLayout>
-        <Label [text]="this.couponService.couponToMap.name" horizontalAlignment="center"></Label>
-        <Label text="Offer Available at: "></Label>
+        <Label [text]="this.couponService.couponToMap.name" horizontalAlignment="center" style="margin: 10; font-size: 20"></Label>
+        <GridLayout column="*,*" style= "margin-left: 10; margin-right: 10">
+                <Label text="Offered By: " col="0"></Label>
+                <Label [text]="this.couponService.couponToMap.business" horizontalAlignment="right"  col="1"></Label>
+        </GridLayout>
+        <Label text="Offer Available at: " style="margin-left: 10"></Label>
         <StackLayout *ngFor="let location of this.couponService.couponToMap.locNames; let i = index">
             <GridLayout columns="*,*" rows="*">
-                <Label col="0" [text]="location"></Label>
+                <StackLayout col="0" verticalAlignment="center" style="margin-left: 10">
+                        <Label [text]="location"></Label>
+                </StackLayout>
                 <Button col= "1" text="Show Directions" (tap)="showMap(this.couponService.couponToMap.coordinates[i][0], this.couponService.couponToMap.coordinates[i][1])" class="btn btn-primary"></Button>
             </GridLayout>
         </StackLayout>
+        <Button text="Save Coupon" class="btn btn-primary" (tap)="onCouponSave(this.couponService.couponToMap)"></Button>
+        <Button text= "Unsave Coupon" class="btn btn-primary" (tap)="onCouponUnsave(this.couponService.couponToMap)"></Button>
     </StackLayout>
 </ScrollView>
 
