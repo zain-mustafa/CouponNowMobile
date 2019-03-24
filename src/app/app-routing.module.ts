@@ -9,6 +9,7 @@ import { ChooseinterestComponent } from "./chooseinterest/chooseinterest.compone
 import { MapToCouponComponent } from "./map-to-coupon/map-to-coupon.component";
 import { AcceptedListComponent } from "./accepted-list/accepted-list.component";
 import { ChangeRadiusComponent } from "./change-radius/change-radius.component";
+import { RemoveInterestsComponent } from "./remove-interests/remove-interests.component";
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
     { path: 'chooseinterest', component: ChooseinterestComponent},
     { path: 'map', component: MapToCouponComponent },
     { path: 'acceptedlist', component: AcceptedListComponent},
-    { path: 'changeradius', component: ChangeRadiusComponent}
+    { path: 'changeradius', component: ChangeRadiusComponent},
+    { path: 'removeinterest', component: RemoveInterestsComponent}
 ];
 
 @NgModule({

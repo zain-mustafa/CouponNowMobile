@@ -9,6 +9,8 @@ import { GeolocationService } from '../geolocation.service';
 import { Location, distance } from "nativescript-geolocation";
 import { Page } from "tns-core-modules/ui/page";
 import * as Toast from 'nativescript-toast';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+import * as app from "tns-core-modules/application";
 
 @Component({
   selector: 'ns-map-to-coupon',
@@ -96,4 +98,9 @@ export class MapToCouponComponent implements OnInit {
         Toast.makeText("You dont have this coupon Saved!!").show();
     }
   }
+
+  onDrawerButtonTap(): void {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.showDrawer();
+}
 }

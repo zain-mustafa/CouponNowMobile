@@ -4,6 +4,8 @@ import { Page } from 'tns-core-modules/ui/page/page';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as Toast from 'nativescript-toast';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+import * as app from "tns-core-modules/application";
 
 @Component({
   selector: 'ns-change-radius',
@@ -45,4 +47,9 @@ export class ChangeRadiusComponent implements OnInit {
         });
       }
   }
+
+  onDrawerButtonTap(): void {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.showDrawer();
+}
 }

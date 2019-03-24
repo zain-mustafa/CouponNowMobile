@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { CouponlistService } from '../couponlist.service';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+import * as app from "tns-core-modules/application";
 
 @Component({
   selector: 'ns-accepted-list',
@@ -30,5 +32,10 @@ export class AcceptedListComponent implements OnInit {
     console.log(this.couponService.couponToMap);
     this.router.navigate(['/map']);
   }
+
+  onDrawerButtonTap(): void {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.showDrawer();
+}
 
 }

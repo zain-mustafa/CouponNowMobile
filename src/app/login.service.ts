@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class LoginService {
 
-    private serverUrl = "http://a9e401d5.ngrok.io";
+    private serverUrl = "http://19b87932.ngrok.io";
 
     public sortedCustomerInterests = [];
 
@@ -78,7 +78,9 @@ export class LoginService {
         this.customerInfo.interests = response['interests'];
         this.customerInfo.acceptedCoupons = response['acceptedCoupons'];
         console.log(this.customerInfo.interests);
+
         this.sortedCustomerInterests = this.customerInfo.interests.sort((a, b) => a.rating < b.rating ? 1 : a.rating > b.rating ? -1 : 0);
+
         console.log(this.sortedCustomerInterests);
         console.log("Done Setting customer Info");
       }

@@ -10,18 +10,19 @@
 
     <FlexboxLayout flexDirection="column" alignContent="flex-end">
         <ScrollView>
-                    <ListView [items]="interests" class="list-group" height="90%">
+                    <ListView [items]="interestToDisplay" class="list-group" height="90%">
                             <ng-template let-interest="item" let-i="index">
                             <GridLayout columns="*,*" orientation="horizontal" class="list-group-item">
                                 <Label col="0" [text]="interest.name"></Label>
-                                <Switch col="1" checked="false" (checkedChange)="interestSelected($event, interest.name)"></Switch>
+                                <Button col="1" text="Add" (tap)="onAddInterest(interest.name)"></Button>
+                                <!-- <Switch col="1" checked="false" (checkedChange)="interestSelected($event, interest.name)"></Switch> -->
                             </GridLayout>
                     </ng-template>
                     </ListView>
         </ScrollView>
 
         <GridLayout columns="*,*" class="bottom-nav" >
-                <Button text="Save Interests" (tap)="onSaveInterests()" col="1" class="btn btn-primary login-btn" horizontalAlignment="right" class="m-t-5"></Button>
+                <Button text="Back" (tap)="onBack()" col="1" class="btn btn-primary login-btn" horizontalAlignment="right" class="m-t-5"></Button>
         </GridLayout>
     </FlexboxLayout>
 

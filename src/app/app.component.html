@@ -13,7 +13,11 @@
                 </GridLayout>
 
                 <GridLayout columns="auto, *" (tap)="onNavItemTap('/chooseinterest')">
-                    <Label col="1" text="Add/Change Interests" class="dash-button p-r-10"></Label>
+                    <Label col="1" text="Add Interests" class="dash-button p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" (tap)="onNavItemTap('/removeinterest')">
+                    <Label col="1" text="Remove Interests" class="dash-button p-r-10"></Label>
                 </GridLayout>
 
                 <GridLayout columns="auto, *" (tap)="onNavItemTap('/acceptedlist')">
