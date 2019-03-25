@@ -76,6 +76,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   updateLocation() {
+    this.isListLoaded = false;
     Geolocation.enableLocationRequest().then(() => {
         Geolocation.getCurrentLocation({timeout: 10000}).then(location => {
             this.latitude = location.latitude;

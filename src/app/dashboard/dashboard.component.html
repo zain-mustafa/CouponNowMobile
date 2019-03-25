@@ -14,9 +14,13 @@
     <Label text="Longitude: {{ this.longitude }}"></Label>
     <Button class="btn btn-primary btn-active" text="Update" (tap)="updateLocation()"></Button>
     <Label text="Nearby Coupons" horizontalAlignment="center"></Label>
-    <Button *ngIf="byDistance" class="btn btn-primary btn-active" text="Filter by Interests" (tap)="toggleByDistance()"></Button>
-    <Button *ngIf="!byDistance" class="btn btn-primary btn-active" text="Filter by Distance" (tap)="toggleByDistance()"></Button>
-    <ScrollView>
+
+    <Button *ngIf="byDistance && isListLoaded" class="btn btn-primary btn-active" text="Filter by Interests" (tap)="toggleByDistance()"></Button>
+    <Button *ngIf="!byDistance && isListLoaded" class="btn btn-primary btn-active" text="Filter by Distance" (tap)="toggleByDistance()"></Button>
+
+    <Label *ngIf="!isListLoaded" text="Loading Coupons..."></Label>
+
+    <ScrollView *ngIf="isListLoaded">
         <ListView *ngIf="isListLoaded && byDistance" [items]="this.nearCouponList" class="list-group" height="100%">
             <ng-template let-coupon="item">
             <GridLayout columns="*" orientation="horizontal" class="list-group-item" (tap)="onCouponClick(coupon)">
@@ -32,7 +36,6 @@
             </GridLayout>
     </ng-template>
     </ListView>
-
-
     </ScrollView>
+
 </StackLayout>
