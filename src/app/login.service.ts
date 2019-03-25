@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class LoginService {
 
-    private serverUrl = "http://19b87932.ngrok.io";
+    private serverUrl = "http://13.59.105.105:3000";
 
     public sortedCustomerInterests = [];
 

@@ -69,16 +69,24 @@ export class MapToCouponComponent implements OnInit {
     if (this.isSaved) {
         return;
     }
+
       this.saveService.saveCoupon(coupon, this.customerInfo.customerInfo.email).subscribe(response => {
-          console.log(this.customerInfo.customerInfo.acceptedCoupons)
         this.customerInfo.customerInfo.acceptedCoupons.push(coupon);
         Toast.makeText("Coupon Saved!!").show();
+        coupon.tags.forEach(tag => {
+            this.customerInfo.customerInfo.interests.forEach(interest => {
+                if (interest.interest === tag) {
+                    interest.rating = interest.rating + 1;
+                }
+            });
+        });
         console.log(response);
       });
   }
 
   onCouponUnsave(coupon) {
     this.couponDeleted = false;
+
     this.customerInfo.customerInfo.acceptedCoupons.forEach(element => {
         if (this.couponService.couponToMap.campaignId === element.campaignId) {
             this.saveService.unsaveCoupon(coupon, this.customerInfo.customerInfo.email).subscribe(response => {
@@ -89,7 +97,6 @@ export class MapToCouponComponent implements OnInit {
                 });
                 Toast.makeText("Coupon UnSaved!!").show();
                 this.couponDeleted = true;
-                console.log(response);
               });
         }
     });
@@ -97,6 +104,15 @@ export class MapToCouponComponent implements OnInit {
     if (this.couponDeleted === false) {
         Toast.makeText("You dont have this coupon Saved!!").show();
     }
+
+    coupon.tags.forEach(tag => {
+        this.customerInfo.customerInfo.interests.forEach(interest => {
+            if (interest.interest === tag) {
+                interest.rating = interest.rating - 1;
+            }
+
+        });
+    });
   }
 
   onDrawerButtonTap(): void {

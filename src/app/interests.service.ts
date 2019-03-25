@@ -9,7 +9,7 @@ import { Observable } from 'tns-core-modules/ui/page/page';
 })
 export class InterestsService {
 
-    private serverUrl = "http://19b87932.ngrok.io";
+    private serverUrl = "http://13.59.105.105:3000";
 
     headers = this.createRequestHeader();
 
@@ -25,7 +25,6 @@ export class InterestsService {
   }
 
   onRemoveInterest(interest: String, email: String) {
-      console.log(interest);
       return this.http.delete(this.serverUrl + '/mobile/interests/delete/' + email + '/' + interest, { headers: this.headers})
       .pipe(map((response) => {
         return response;

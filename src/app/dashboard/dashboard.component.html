@@ -17,22 +17,22 @@
     <Button *ngIf="byDistance" class="btn btn-primary btn-active" text="Filter by Interests" (tap)="toggleByDistance()"></Button>
     <Button *ngIf="!byDistance" class="btn btn-primary btn-active" text="Filter by Distance" (tap)="toggleByDistance()"></Button>
     <ScrollView>
-        <ListView *ngIf="isListLoaded && byDistance" [items]="this.nearCouponList" class="list-group" height="70%">
+        <ListView *ngIf="isListLoaded && byDistance" [items]="this.nearCouponList" class="list-group" height="100%">
             <ng-template let-coupon="item">
             <GridLayout columns="*" orientation="horizontal" class="list-group-item" (tap)="onCouponClick(coupon)">
                 <Label col="0" [text]="coupon.name"></Label>
-                <!-- <Label col="1" text="KM" horizontalAlignment="right" ></Label> -->
             </GridLayout>
     </ng-template>
     </ListView>
 
-    <ListView *ngIf="isListLoaded && !byDistance" [items]="this.couponService.sortedNearCouponList" class="list-group" height="70%">
+    <ListView id="interestsView" *ngIf="isListLoaded && !byDistance" [items]="this.nearInterestList" class="list-group" height="100%">
             <ng-template let-coupon="item">
             <GridLayout columns="*" orientation="horizontal" class="list-group-item" (tap)="onCouponClick(coupon)">
                 <Label col="0" [text]="coupon.name"></Label>
-                <!-- <Label col="1" text="KM" horizontalAlignment="right" ></Label> -->
             </GridLayout>
     </ng-template>
     </ListView>
+
+
     </ScrollView>
 </StackLayout>

@@ -47,6 +47,7 @@ export class ChooseinterestComponent implements OnInit {
                 return selectedInterest;
             }
         });
+        this.customerInfo.sortedCustomerInterests.push(selectedInterest);
         console.log(response);
     });
   }

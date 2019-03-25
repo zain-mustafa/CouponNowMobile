@@ -12,16 +12,13 @@
     <ScrollView>
                 <ListView [items]="this.customerInfo.customerInfo.interests" class="list-group" height="90%">
                         <ng-template let-interest="item" let-i="index">
-                        <GridLayout columns="*,*" orientation="horizontal" class="list-group-item">
+                        <GridLayout columns="*,*,*" orientation="horizontal" class="list-group-item">
                             <Label col="0" [text]="interest.interest"></Label>
-                            <Button col="1" text="Remove" (tap)="onRemoveInterest(interest)"></Button>
+                            <Label col="1" [text]="interest.rating"></Label>
+                            <Button col="2" text="Remove" (tap)="onRemoveInterest(interest)"></Button>
                             <!-- <Switch col="1" checked="false" (checkedChange)="interestSelected($event, interest.name)"></Switch> -->
                         </GridLayout>
                 </ng-template>
                 </ListView>
     </ScrollView>
-
-    <GridLayout columns="*,*" class="bottom-nav" >
-            <Button text="Back" (tap)="onBack()" col="1" class="btn btn-primary login-btn" horizontalAlignment="right" class="m-t-5"></Button>
-    </GridLayout>
 </FlexboxLayout>

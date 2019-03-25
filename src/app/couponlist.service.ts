@@ -8,7 +8,7 @@ import { LoginService } from './login.service';
     providedIn: 'root'
   })
   export class CouponlistService {
-    private serverUrl = "http://19b87932.ngrok.io";
+    private serverUrl = "http://13.59.105.105:3000";
     headers = this.createRequestHeader();
 
     constructor(private http: HttpClient, private customerInfo: LoginService) { }
@@ -17,8 +17,8 @@ import { LoginService } from './login.service';
     isCouponAdded;
 
     sortedNearCouponList = [];
-    interestSortedCouponList = [];
-    couponsNoInterest = [];
+    // interestSortedCouponList = [];
+    // couponsNoInterest = [];
 
     // List updates each time dashboard is opened
     couponToMap = {
@@ -47,6 +47,9 @@ import { LoginService } from './login.service';
     }
 
     sortCouponList(couponList) {
+        this.sortedNearCouponList = [];
+        console.log("Calling Sort Function");
+        console.log(this.customerInfo.sortedCustomerInterests);
 
         couponList.forEach(coupon => {
             this.isCouponAdded = false;
@@ -58,7 +61,7 @@ import { LoginService } from './login.service';
                     }
                 })
             })
-        })
+        });
     }
 
     private createRequestHeader() {

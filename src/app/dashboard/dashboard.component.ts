@@ -8,6 +8,9 @@ import * as Geolocation from "nativescript-geolocation";
 import { RouterExtensions } from 'nativescript-angular/router';
 import { LoginService } from '../login.service';
 import * as Toast from 'nativescript-toast';
+import { Page } from 'tns-core-modules/ui/page/page';
+import { ListView } from 'tns-core-modules/ui/list-view/list-view'
+
 
 @Component({
   selector: 'ns-dashboard',
@@ -21,10 +24,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     latitude: number = 0;
 
     nearCouponList = [];
+    nearInterestList = [];
     isListLoaded = false;
     byDistance = true;
 
-  constructor( public geolocation: GeolocationService, public couponService: CouponlistService, public router: RouterExtensions, public customerInfo: LoginService) { }
+
+
+  constructor( public geolocation: GeolocationService, public couponService: CouponlistService, public router: RouterExtensions, public customerInfo: LoginService, public page:Page) { }
 
   ngOnInit() {
 
@@ -39,8 +45,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             .subscribe(response => {
                 this.nearCouponList = response['couponList'];
                 // console.log(this.nearCouponList);
-                this.couponService.sortCouponList(this.nearCouponList);
                 this.isListLoaded = true;
+                this.couponService.sortCouponList(this.nearCouponList);
+                this.nearInterestList = this.couponService.sortedNearCouponList;
             }, error => {
                 Toast.makeText("There are no offers available with your radius! :( ").show();
                 console.log('There was an error getting coupons');
@@ -81,6 +88,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
                 this.nearCouponList = response['couponList'];
                 // console.log(this.nearCouponList);
                 this.isListLoaded = true;
+                this.couponService.sortCouponList(this.nearCouponList);
+                this.nearInterestList = this.couponService.sortedNearCouponList;
+                console.log(this.nearInterestList);
             }, error => {
                 console.log('There was an error getting coupons');
             });
@@ -94,8 +104,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   toggleByDistance() {
       if (this.byDistance) {
           this.byDistance = false;
+          this.couponService.sortCouponList(this.nearCouponList);
       } else {
           this.byDistance = true;
+          this.couponService.sortCouponList(this.nearCouponList);
       }
   }
 
